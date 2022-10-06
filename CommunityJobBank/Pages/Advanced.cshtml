@@ -1,0 +1,105 @@
+﻿@page
+@model CommunityJobBank.Pages.AdvancedModel
+@{
+}
+
+<form method="post">
+<div class="col">
+    <section id="advancedSearch" class="container mt-3 pt-2 pb-2">
+        <div class="row">
+            <div class="col text-center mb-3 fs-4">
+                Advanced Search
+            </div>
+        </div>
+        <div class="row mt-2">
+            <div class="col form-floating">
+                <input type="text" name="se_position" id="se_position" class="form-control" aria-label="Position">
+                <label for="se_position" class="ms-2">Position</label>
+            </div>
+            <div class="col form-floating">
+                <input type="text" name="se_employer" id="se_employer" class="form-control" aria-label="Employer">
+                <label for="se_employer" class="ms-2">Employer</label>
+            </div>
+        </div>
+        <div class="row mt-2">
+            <div class="col">
+                <div class="mb-2 search-box-label">Location</div>
+                <div class="ms-5">
+                    <div>
+                        <input class="form-label-text" type="radio" name="se_location" id="se_location_geoarea" checked="checked" value="geoarea"> Geographic area
+                    </div>
+                    <div>
+                        <input class="form-label-text" type="radio" name="se_location" id="se_location_provincecity" value="provincecity"> <select onfocus="changeGeoAreaFocusToProvinceCityAdv();" name="se_province" id="se_province" class="d-inline-block form-select w-25"><option value="">Province</option><option value="NL">Newfoundland and Labrador</option></select> and/or <div class="d-inline-block form-floating w-50"><input onfocus="changeGeoAreaFocusToProvinceCityAdv();" type="text" name="se_citytown" id="se_citytown" class="form-control" aria-label="City/Town"><label for="se_citytown">City/Town</label></div>
+                    </div>
+                    <div>
+                        <input class="form-label-text" type="radio" name="se_location" id="se_location_virtual" value="virtual"> Virtual
+                    </div>
+                    <div>
+                        <input class="form-label-text" type="radio" name="se_location" id="se_location_travelling" value="travelling"> Travelling
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row mt-2">
+            <div class="col">
+                <div class="mb-2 search-box-label">Hours</div>
+                <div class="ms-5">
+                    <input class="form-label-text" type="radio" name="se_hours" id="se_hours_fulltime" checked="checked" value="fulltime"> Full-time
+                    <br />
+                    <input class="form-label-text" type="radio" name="se_hours" id="se_hours_parttime" value="parttime"> Part-time
+                </div>
+            </div>
+            <div class="col">
+                <div class="mb-2 search-box-label">Term</div>
+                <div class="ms-5">
+                    <input class="form-label-text" type="radio" name="se_term" id="se_term_permanent" checked="checked" value="permanent"> Permanent
+                    <br />
+                    <input class="form-label-text" type="radio" name="se_term" id="se_term_temporary" value="temporary"> Temporary
+                    <br />
+                    <input class="form-label-text" type="radio" name="se_term" id="se_term-casual" value="casual"> Casual
+                    <br />
+                    <input class="form-label-text" type="radio" name="se_term" id="se_term-seasonal" value="seasonal"> Seasonal
+                </div>
+            </div>
+        </div>
+        <div class="row mt-2">
+            <div class="col">
+                <div class="mb-2 search-box-label">Sort by</div>
+                <div class="ms-5">
+                    <input class="form-label-text" type="radio" name="se_sortby" id="se_sortby_bestmatch" checked="checked" value="bestmatch"> Best match
+                    <br />
+                    <input class="form-label-text" type="radio" name="se_sortby" id="se_sortby_dateposted" value="dateposted"> Date posted
+                </div>
+            </div>
+            <div class="col">
+                <div class="mb-2 search-box-label">Date posted</div>
+                <div class="ms-5">
+                    <input class="form-label-text" type="radio" name="se_dateposted" id="se_dateposted_last48hours" checked="checked" value="last48hours"> Last 48 hours
+                    <br />
+                    <input class="form-label-text" type="radio" name="se_dateposted" id="se_dateposted_last30days" value="last30days"> Last 30 days
+                    <br />
+                    <input class="form-label-text" type="radio" name="se_dateposted" id="se_dateposted_morethan30days" value="morethan30days"> More than 30 days
+                </div>
+            </div>
+        </div>
+        <div class="row mt-3">
+            <div class="col text-center">
+                <button type="submit" class="btn btn-primary" asp-page="Results" asp-page-handler="SearchAdvanced"><i class="bi bi-search"></i> Search</button>
+            </div>
+        </div>
+    </section>
+</div>
+</form>
+
+<script>
+    window.addEventListener('load', function () {
+        var x = document.getElementById("searchBox");
+        x.parentNode.removeChild(x);
+    });
+</script>
+
+<script>
+    function changeGeoAreaFocusToProvinceCityAdv() {
+        document.getElementById("se_location_provincecity").checked = true;
+    }
+</script>

@@ -1,0 +1,115 @@
+﻿@page
+@model CommunityJobBank.Pages.ResultsModel
+@{
+}
+
+<div id="se_criteria" class="col-md-12 col-lg-4">
+    <section id="criteriaBar" class="container mt-3 mb-3 sticky-top">
+        <div class="row">
+            <div class="col text-center mb-2 fs-5">
+                Current Search Criteria
+            </div>
+        </div>
+        <div class="border rounded p-3 bg-secondary text-white">
+            <div class="row mb-2">
+                <div class="col">
+                    Location:
+                </div>
+                <div class="col col-md-10 col-lg-7">
+                    @Model.searchCriteria.se_location
+                </div>
+            </div>
+            <div class="row mb-2">
+                <div class="col">
+                    Position:
+                </div>
+                <div class="col col-md-10 col-lg-7">
+                    @Model.searchCriteria.se_position
+                </div>
+            </div>
+            <div class="row mb-2">
+                <div class="col">
+                    Sorting by:
+                </div>
+                <div class="col col-md-10 col-lg-7">
+                    @Model.searchCriteria.se_sortby
+                </div>
+            </div>
+            <div class="row mb-2">
+                <div class="col">
+                    Period:
+                </div>
+                <div class="col col-md-10 col-lg-7">
+                    @Model.searchCriteria.se_last30days, @Model.searchCriteria.se_dateposted
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+<div id="browse_criteria" class="col-md-12 col-lg-4">
+    <section id="browseBar" class="container mt-3 mb-3 sticky-top">
+        <div class="border rounded p-4 bg-secondary text-white">
+            <div class="row mb-2">
+                <div class="col text-center">
+                    Browsing all jobs in your geographic area
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+<div class="col-sm-12 col-md mt-3">
+    <div class="m-5 text-center">
+        Need header and maybe sorting here.
+    </div>
+    <section id="results" class="container mt-3">
+        
+            @if(Model.jobs != null)
+            {
+                @foreach (var job in Model.jobs)
+                {
+                    <div class="resultItem row p-3">
+                        <div class="col">
+                            <a href="/Details?sid=@job.system_id">
+                                <p class="fw-bold text-primary mb">@job.title</p>
+                                <p class="text-secondary">@job.employer_name</p>
+                                <p class="fst-italic"><i class="bi bi-calendar-event text-primary"></i> @job.date_posted.ToString("MMMM dd, yyyy")</p>
+                                @{
+                                    /*
+                                    To determine the value to display for location...
+                                        jobs_info.job_type
+                                            if 1 or null or 0 --> then show the location
+                                            if 2 --> Virtual
+                                            if 3 --> Travelling
+                                    */
+                                }
+                                <p><i class="bi bi-geo-alt text-primary"></i> Locations:
+                                    @if(job.locations != null)
+                                    {
+                                        @foreach(var loc in job.locations) {
+                                            <span class="d-block ms-3">@loc.city_name, @loc.province_cd</span>
+                                        }
+                                    }
+                                </p>
+                                <p><i class="bi bi-currency-dollar text-primary"></i> @job.salary</p>
+                            </a>
+                        </div>
+                    </div>
+                }
+            }
+        
+    </section>
+    <div class="m-5 text-center">
+        Maybe need paging controls here, or do a "load more" like Job Bank does.
+    </div>
+</div>
+
+@if(!string.IsNullOrEmpty(Model.searchType) && Model.searchType.Equals("browse"))
+{
+    //Hide the search criteria box and display the browsse criteria box
+    <script>
+        window.addEventListener('load', function () {
+            document.getElementById("se_criteria").style.display = "none";
+            document.getElementById("browse_criteria").style.display = "block";
+        });
+    </script>
+}

@@ -1,0 +1,79 @@
+﻿@page
+@model CommunityJobBank.Pages.DetailsModel
+@{
+}
+
+<h1>Job ID handed from results screen: @Model.job_id</h1>
+
+<div class="col">
+    <section id="jobDetails" class="container mt-3">
+        <div class="row">
+            <div class="col-md-8">
+                <div>
+                    <span class="d-block d-xl-inline text-primary fs-4 me-3">Job Title Lorem ipsum dolor sit</span>
+                    <span id="nocInfo" class="d-block d-xl-inline rounded-pill border p-1 ps-3 pe-3 bg-info align-text-top">NOC 1234: Lorem ipsum dolor sit amet consectetur</span>
+                </div>
+                <div class="text-secondary fs-6">
+                    Posted By Employer
+                </div>
+            </div>
+            <div class="col pt-2">
+                @{
+                    //Will need to figure out the logic on the text to use for the link, depending on if it's job bank or not.
+                    //The link itself will be the jobs_info.url column.
+                }
+                <a href="#"><i class="bi bi-box-arrow-up-right"></i> View orignal post on Job Bank</a>
+            </div>
+        </div>
+        <div class="row bg-light mt-3 p-2 rounded">
+            <div class="col-md align-middle">
+                <i class="bi bi-calendar-event me-3 fs-3"></i><span class="fw-bold">Date posted:</span> September 22, 2022
+            </div>
+            <div class="col-md align-middle">
+                <i class="bi bi-calendar-event me-3 fs-3 text-light"></i><span class="fw-bold">Last updated:</span> September 22, 2022
+            </div>
+            <div class="col-md align-middle">
+                <i class="bi bi-calendar-event me-3 fs-3 text-light"></i><span class="fw-bold">Displayed until:</span> September 26, 2022
+            </div>
+        </div>
+        <div class="row p3 mt-3">
+            <div class="col-md align-middle text-center mb-3">
+                <i class="bi bi-geo-alt fs-3 text-primary me-2"></i>
+                City, Province
+            </div>
+            <div class="col-md align-middle text-center mb-3">
+                <i class="bi bi-clock fs-3 text-primary me-2"></i>
+                Hours, Term
+            </div>
+            <div class="col-md align-middle text-center mb-3">
+                <i class="bi bi-currency-dollar fs-3 text-primary me-2"></i>
+                Salary
+            </div>
+            <div class="col-md align-middle text-center mb-3">
+                <i class="bi bi-building fs-3 text-primary me-2"></i>
+                Job Type
+            </div>
+        </div>
+        <div class="row p3 mt-3">
+            <div class="col-md align-middle text-center mb-3">
+                <i class="bi bi-link-45deg fs-3 text-primary me-2"></i>
+                Website
+            </div>
+        </div>
+        @{
+            //Display the following div only if jobs_info.job_note is not null
+        }
+        <div class="row mt-2">
+            <div class="col">
+                <div class="ps-3 pe-3 pt-2 pb-2 bg-secondary text-light"><i class="bi bi-card-text fs-3 me-2"></i> <span class="fs-5">Job Description</span></div>
+                <div class="border border-secondary p-3">
+                    <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Laborum, ex eveniet, odit officia molestiae nesciunt possimus fugiat, voluptatibus obcaecati temporibus velit non illo iste sapiente nisi error et. Eum, excepturi.</p>
+                    <p>Totam culpa in ipsam aliquid ab, perspiciatis laborum eveniet maiores facilis corrupti sit voluptates voluptatibus sunt suscipit voluptatem aut impedit non exercitationem aperiam quas doloremque dolorem dolorum? Reprehenderit, officia repellendus.</p>
+                    <p>Labore consequuntur repellendus provident perferendis cum harum architecto, aperiam praesentium, minus quo magni dolores inventore laboriosam reiciendis est quod deleniti eum in, nesciunt officiis itaque dolorem atque? Reiciendis, molestiae sequi.</p>
+                    <p>Tempora, nesciunt accusantium vel explicabo deserunt suscipit quae facilis quo dignissimos quisquam pariatur eligendi reiciendis adipisci veniam praesentium consequuntur laudantium, sit, dolorum aperiam recusandae. Iusto minus pariatur obcaecati eius facere.</p>
+                    <p>Enim, numquam pariatur dolore aperiam dolorum eaque delectus. Accusantium labore tenetur, eius alias rem nam accusamus sit quis hic? Laborum ea cumque hic sint inventore nemo repellat officiis tempora quisquam?</p>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>

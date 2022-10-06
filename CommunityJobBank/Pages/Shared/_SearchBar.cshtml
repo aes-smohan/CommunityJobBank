@@ -1,0 +1,69 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+
+<form method="post">
+<section id="searchBox" class="row border text-center p-3 bg-light mt-3 align-items-center">
+    <div class="col-lg mb-3 mt-4">
+            <input type="submit" class="btn btn-secondary" asp-page="Results" asp-page-handler="Browse" value="Browse All Jobs" />
+    </div>
+    <div class="col-md-9">
+        <div class="row">
+            <div class="col-md-8 mb-3">
+                <div class="form-floating">
+                    <input type="text" name="se_position" id="se_position" class="form-control" aria-label="Position">
+                    <label for="se_position">Job title or field</label>
+                </div>
+                <div class="row align-items-center mt-2">
+                    <div class="col-12">
+                        <label class="search-box-label text-center me-3">Where?</label>
+                    </div>
+                    <div class="col-12 text-start ms-xl-5">
+                        <div>
+                            <input class="form-label-text" type="radio" name="se_location" id="se_location_geoarea" checked="checked" value="geoarea"> Geographic area
+                        </div>
+                        <div>
+                            <input class="form-label-text" type="radio" name="se_location" id="se_location_provincecity" value="provincecity"> <select onfocus="changeGeoAreaFocusToProvinceCity();" name="se_province" id="se_province" class="d-inline-block form-select w-25"><option value="">Province</option><option value="NL">Newfoundland and Labrador</option></select> and/or <div class="d-inline-block form-floating w-50"><input onfocus="changeGeoAreaFocusToProvinceCity();" type="text" name="se_citytown" id="se_citytown" class="form-control" aria-label="City/Town"><label for="se_citytown">City/Town</label></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 mb-3 mt-3">
+                <div class="row">
+                    <div class="col text-center">
+                        <div>
+                            <label class="search-box-label me-2 mb-2">Sort by</label>
+                        </div>
+                        <div>
+                            <input class="form-label-text" type="radio" name="se_sortby" id="se_sortby_bestmatch" checked="checked" value="bestmatch"> Best Match
+                            <br class="d-md-block d-lg-none d-none" />
+                            <input class="form-label-text" type="radio" name="se_sortby" id="se_sortby_dateposted" value="dateposted"> Date Posted
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col text-center mt-4">
+                        <div class="col-md">Include only last 30 Days? <input type="checkbox" name="se_last30days" id="se_last30days"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md mb-3 mt-4 ">
+        <div>
+            <button type="submit" class="btn btn-primary" asp-page="Results" asp-page-handler="Search"><i class="bi bi-search"></i> Search</button>
+        </div>
+        <div>
+            <a href="/Advanced">Advanced</a>
+        </div>
+    </div>
+</section>
+</form>
+
+<script>
+    function changeGeoAreaFocusToProvinceCity() {
+        document.getElementById("se_location_provincecity").checked = true;
+    }
+</script>

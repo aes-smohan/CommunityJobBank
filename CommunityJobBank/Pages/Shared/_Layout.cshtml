@@ -1,0 +1,78 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - CommunityJobBank</title>
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/lib/bootstrap52/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/CommunityJobBank.styles.css" asp-append-version="true" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
+</head>
+
+<body class="d-flex flex-column min-vh-100">
+    <header class="container-float">
+        <div class="row g-0">
+            <div class="col">
+                <div class="container-md">
+                    <div class="row">
+                        <div class="col-sm">
+                            <p class="text-center text-md-start pt-3 fs-1">
+                                <a href="/" class="no-decoration">Community Job Bank</a>
+                            </p>
+                        </div>
+                        <div class="col-sm mx-auto">
+                            <p class="text-center text-md-end pt-3">
+                                <img src="img/AesInc-MasterLogo-small-01.png" alt="AES Inc. Growing Sustainable Partnerships" class="img-fluid" style="max-width: 200px;">
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+    <main class="container-md">
+        <div class="row mt-3 mb-3">
+            <div class="col">
+                <partial name="_SearchBar" />
+                <div class="container-md">
+                    <div class="row">
+                        @RenderBody()
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+    <footer class="container-float mt-auto">
+        <div class="row g-0">
+            <div class="col">
+                <div class="container-md">
+                    <div class="row">
+                        <div class="col-md">
+                            <p class="text-center text-md-start pt-3">
+                                Problems accessing?<br />Contact support at 1-844-245-3571, or email <a href="mailto:support@aeslms.ca">support@aeslms.ca</a>.
+                            </p>
+                        </div>
+                        <div class="col-md">
+                            <p class="text-center text-md-end pt-4">
+                                Copyright © 2022 AES Inc. All rights reserved.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!--
+    <a class="nav-link text-dark" asp-area="" asp-page="/Index">Home</a>
+    <a class="nav-link text-dark" asp-area="" asp-page="/Privacy">Privacy</a>
+    -->
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap52/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>
